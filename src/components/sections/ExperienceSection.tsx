@@ -1,0 +1,165 @@
+import Image from "next/image";
+import { portfolio } from "@/data/portfolio";
+import { Container } from "@/components/ui/Container";
+import { Reveal } from "@/components/motion/Reveal";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Badge } from "@/components/ui/Badge";
+import { ProjectGallery } from "@/components/gallery/ProjectGallery";
+
+const techLogos: Record<string, string> = {
+  React: "/logotechnologie/reactjs-svgrepo-com.svg",
+  Vite: "/logotechnologie/vitejs-svgrepo-com.svg",
+  "Next.js": "/logotechnologie/nextjs-icon-svgrepo-com.svg",
+  NestJS: "/logotechnologie/nestjs-svgrepo-com.svg",
+  "Spring Boot": "/logotechnologie/Spring_Boot.svg.png",
+  PostgreSQL: "/logotechnologie/postgresql-svgrepo-com.svg",
+  MongoDB: "/logotechnologie/mongo-svgrepo-com.svg",
+  TypeScript: "/logotechnologie/typescript-icon-svgrepo-com.svg",
+  JavaScript: "/logotechnologie/javascript-svgrepo-com.svg",
+  Docker: "/logotechnologie/docker-svgrepo-com.svg",
+  "Docker Compose": "/logotechnologie/docker-svgrepo-com.svg",
+  Jenkins: "/logotechnologie/jenkins-svgrepo-com.svg",
+  Nginx: "/logotechnologie/nginx-svgrepo-com.svg",
+  "GitLab CI/CD": "/logotechnologie/gitlab-svgrepo-com.svg",
+  Stripe: "/logotechnologie/stripe-v2-svgrepo-com.svg",
+  GitHub: "/logotechnologie/github-svgrepo-com.svg",
+  "GitHub Actions": "/logotechnologie/github-svgrepo-com.svg",
+  WebSocket: "/logotechnologie/websocket-svgrepo-com.svg",
+  JWT: "/logotechnologie/jwt-icon.png",
+  RBAC: "/logotechnologie/rbac.png",
+  Jest: "/logotechnologie/jest-snapshot-svgrepo-com.svg",
+  "Gemini API": "/logotechnologie/api gemini.png",
+  "Node.js": "/logotechnologie/nodejs-svgrepo-com.svg",
+  Android: "/logotechnologie/android-svgrepo-com.svg",
+  "Android Studio": "/logotechnologie/android-svgrepo-com.svg",
+  Kotlin: "/logotechnologie/kotlin-16-svgrepo-com.svg",
+  Xcode: "/logotechnologie/xcode-svgrepo-com.svg",
+  Swift: "/logotechnologie/swift-svgrepo-com.svg",
+  MySQL: "/logotechnologie/mysql-logo-svgrepo-com.svg",
+  XML: "/logotechnologie/xml-svgrepo-com.svg",
+  Maven: "/logotechnologie/maven-svgrepo-com.svg",
+  SonarQube: "/logotechnologie/sonarqube-svgrepo-com.svg",
+  Prometheus: "/logotechnologie/prometheus-svgrepo-com.svg",
+  Grafana: "/logotechnologie/grafana-svgrepo-com.svg",
+  Nexus: "/logotechnologie/nexus-svgrepo-com.svg",
+};
+
+export function ExperienceSection() {
+  const sortedExperience = [...portfolio.experience].sort(
+    (a, b) => getPeriodSortValue(b.period) - getPeriodSortValue(a.period),
+  );
+
+  return (
+    <section id="experience" className="-mt-6 scroll-mt-24 bg-[var(--background)] pb-16 pt-0 sm:-mt-8 sm:pb-20 sm:pt-1">
+      <Container className="max-w-[96rem] px-5 sm:px-8 lg:px-16">
+        <Reveal>
+          <SectionHeading
+            eyebrow="Expérience"
+            title="Parcours professionnel"
+            description="Les principales expériences menées en développement web, mobile, backend et intégration DevOps."
+          />
+        </Reveal>
+
+        <div className="mt-1 grid gap-5">
+            {sortedExperience.map((item, index) => (
+              <Reveal
+                key={`${item.title}-${item.company}`}
+                delay={0.04 * index}
+                y={0}
+                initial={{
+                  opacity: 0,
+                  x: index % 2 === 0 ? -72 : 72,
+                }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1], delay: 0.06 * index }}
+                viewport={{ once: true, amount: 0.2 }}
+                className="h-full overflow-hidden rounded-3xl bg-white/95 shadow-[0_18px_45px_rgba(15,23,42,0.06)]"
+              >
+                <div className="grid gap-6 p-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,0.9fr)] lg:items-start xl:gap-8 xl:p-6">
+                  <div>
+                    <div className="flex flex-col gap-2">
+                      <p className="text-sm font-semibold text-[#682732]">{item.period}</p>
+                      <h3 className="text-xl font-semibold text-slate-900">{item.title}</h3>
+                      <p className="text-sm text-slate-600">
+                        {item.company}
+                        {item.location ? <span className="text-slate-400"> · {item.location}</span> : null}
+                      </p>
+                    </div>
+
+                    <p className="mt-4 text-sm leading-7 text-slate-600">{item.summary}</p>
+
+                    <ul className="mt-4 space-y-2 text-sm text-slate-600">
+                      {item.highlights.map((h) => (
+                        <li key={h} className="flex gap-2">
+                          <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#682732]/80" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {item.stack.map((tech) => (
+                        <Badge
+                          key={tech}
+                          className="px-3.5 py-1.5 text-sm"
+                        >
+                          <span className="inline-flex items-center gap-2.5">
+                            {techLogos[tech] ? (
+                              <Image
+                                src={techLogos[tech]}
+                                alt=""
+                                width={16}
+                                height={16}
+                                className="h-4 w-4 object-contain"
+                                unoptimized
+                              />
+                            ) : null}
+                            <span>{tech}</span>
+                          </span>
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+
+                  <ProjectGallery
+                    images={item.images}
+                    aspect="16:9"
+                    className="mt-0"
+                    thumbnailsClassName="grid-cols-4"
+                  />
+                </div>
+              </Reveal>
+            ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+function getPeriodSortValue(period: string) {
+  const months: Record<string, number> = {
+    janv: 1,
+    fev: 2,
+    "fév": 2,
+    mars: 3,
+    avr: 4,
+    mai: 5,
+    juin: 6,
+    juil: 7,
+    aout: 8,
+    "août": 8,
+    sept: 9,
+    oct: 10,
+    nov: 11,
+    dec: 12,
+    "déc": 12,
+  };
+
+  const lower = period.toLowerCase();
+  const yearMatch = lower.match(/\d{4}/);
+  const year = yearMatch ? Number(yearMatch[0]) : Number.MAX_SAFE_INTEGER;
+  const monthKey = Object.keys(months).find((m) => lower.includes(m));
+  const month = monthKey ? months[monthKey] : 0;
+
+  return year * 100 + month;
+}
