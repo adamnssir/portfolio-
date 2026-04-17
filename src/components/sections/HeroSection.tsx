@@ -35,32 +35,32 @@ export function HeroSection() {
         <div className="absolute top-40 right-10 h-[420px] w-[420px] rounded-full bg-[#b4707b]/10 blur-3xl" />
       </div>
 
-      <Container className="relative max-w-[96rem] px-5 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-12 lg:px-16">
-        <div id="about" className="scroll-mt-24" />
+      <Container className="relative max-w-[96rem] px-4 pb-12 pt-6 sm:px-6 sm:pb-20 sm:pt-12 lg:px-16">
+        <div id="about" className="scroll-mt-20" />
 
         <Reveal>
           <div>
-            <p className="text-lg font-semibold uppercase tracking-[0.28em] text-[#682732] sm:text-xl">
+            <p className="text-base sm:text-lg font-semibold uppercase tracking-[0.28em] text-[#682732]">
               Profil
             </p>
           </div>
         </Reveal>
 
         <Reveal delay={0.05} className="mt-2">
-          <div className="grid items-center gap-10 lg:grid-cols-[380px_minmax(0,1fr)] lg:gap-20">
-            <div className="w-full max-w-[380px]">
+          <div className="grid items-center gap-8 lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-20">
+            <div className="w-full max-w-[280px] sm:max-w-[320px] mx-auto lg:mx-0">
               <div className="relative">
-                <div className="absolute -left-4 -top-4 h-24 w-24 rounded-full bg-[#d8b1b8]/45 blur-2xl" />
-                <div className="absolute -bottom-5 -right-5 h-28 w-28 rounded-full bg-[#c68c96]/35 blur-2xl" />
-                <div className="absolute inset-0 rotate-6 rounded-[36px] bg-gradient-to-br from-[#d8b1b8]/45 to-[#f3e7ea]/65" />
-                <div className="relative overflow-hidden rounded-[36px] bg-white p-2 shadow-[0_24px_60px_rgba(104,39,50,0.18)]">
+                <div className="absolute -left-3 -top-3 sm:-left-4 sm:-top-4 h-20 sm:h-24 w-20 sm:w-24 rounded-full bg-[#d8b1b8]/45 blur-2xl" />
+                <div className="absolute -bottom-4 -right-4 sm:-bottom-5 sm:-right-5 h-24 sm:h-28 w-24 sm:w-28 rounded-full bg-[#c68c96]/35 blur-2xl" />
+                <div className="absolute inset-0 rotate-6 rounded-[28px] sm:rounded-[36px] bg-gradient-to-br from-[#d8b1b8]/45 to-[#f3e7ea]/65" />
+                <div className="relative overflow-hidden rounded-[28px] sm:rounded-[36px] bg-white p-1.5 sm:p-2 shadow-[0_24px_60px_rgba(104,39,50,0.18)]">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#f3e7ea]/80 via-transparent to-[#ead1d6]/70" />
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[28px]">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] sm:rounded-[28px]">
                     <Image
                       src="/photo5.png"
                       alt={`Photo de ${portfolio.name}`}
                       fill
-                      sizes="(min-width: 1024px) 300px, 70vw"
+                      sizes="(min-width: 1024px) 300px, (min-width: 640px) 50vw, 80vw"
                       className="object-cover"
                       priority
                     />
@@ -69,22 +69,22 @@ export function HeroSection() {
               </div>
             </div>
 
-            <div>
+            <div className="text-center lg:text-left">
               <TypewriterText
                 prefix="Je m'appelle"
                 text={portfolio.name}
-                className="text-3xl text-slate-900 sm:text-5xl lg:text-6xl"
+                className="text-2xl sm:text-4xl lg:text-5xl lg:text-6xl"
                 animatedClassName="inline-block font-black uppercase tracking-[0.12em] text-[#682732] drop-shadow-[0_0_10px_rgba(104,39,50,0.22)]"
                 loopPauseMs={3000}
               />
-              <p className="mt-3 text-lg font-medium text-slate-600 sm:text-2xl">{portfolio.title}</p>
-              <p className="mt-2 text-base font-semibold text-[#682732] sm:text-lg">
+              <p className="mt-2 sm:mt-3 text-base sm:text-xl lg:text-2xl font-medium text-slate-600">{portfolio.title}</p>
+              <p className="mt-1.5 sm:mt-2 text-sm sm:text-base lg:text-lg font-semibold text-[#682732]">
                 {portfolio.heroStack}
               </p>
 
-              <div className="mt-7">
+              <div className="mt-6 sm:mt-7">
                
-                <ul className="hero-contact-wrapper" aria-label="Contact rapide">
+                <ul className="hero-contact-wrapper justify-center lg:justify-start" aria-label="Contact rapide">
                   {contacts.map((contact) => (
                     <li key={contact.key} className="hero-contact-item">
                       {contact.href ? (
@@ -135,39 +135,60 @@ export function HeroSection() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="mt-6">
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.35fr)] lg:items-stretch">
-            <div className="flex h-full flex-col rounded-3xl bg-white/95 px-5 py-4 shadow-[0_18px_45px_rgba(15,23,42,0.06)] sm:px-6 sm:py-5">
-              <p className="mt-4 text-justify text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
+        <Reveal delay={0.1} className="mt-5 sm:mt-6">
+          <div className="grid gap-5 lg:gap-6 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1.35fr)] lg:items-stretch">
+            <div className="flex h-full flex-col rounded-3xl bg-white/95 px-4 py-4 sm:px-6 sm:py-5 shadow-[0_18px_45px_rgba(15,23,42,0.06)]">
+              <p className="mt-3 text-justify text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
                 {portfolio.summary}
               </p>
-              <div className="mt-7 flex flex-col items-center gap-4 text-center">
+              <div className="mt-6 sm:mt-7 flex flex-col items-center gap-4 text-center">
                 <a
                   href="#experience"
-                  className="hero-learn-more"
+                  className="hero-learn-more hidden xl:block"
                 >
                   <span className="hero-learn-more-circle" aria-hidden="true">
                     <span className="hero-learn-more-icon hero-learn-more-arrow" />
                   </span>
                   <span className="hero-learn-more-text">Mes experiences</span>
                 </a>
+                <a
+                  href="/cv.pdf"
+                  download
+                  className="xl:hidden group relative inline-flex h-10 sm:h-11 w-full max-w-[200px] cursor-pointer items-center overflow-hidden rounded-full border border-[#571f29] bg-[#682732] shadow-[0_12px_30px_rgba(104,39,50,0.22)] transition-all duration-300 hover:bg-[#571f29]"
+                >
+                  <span className="w-full -translate-x-2 whitespace-nowrap text-center text-xs sm:text-sm font-semibold text-white transition-all duration-300 group-hover:text-transparent">
+                    Télécharger CV
+                  </span>
+                  <span className="absolute right-0 flex h-full w-10 sm:w-11 translate-x-0 items-center justify-center bg-[#571f29] transition-all duration-300 group-hover:w-full">
+                    <svg
+                      viewBox="0 0 35 35"
+                      aria-hidden="true"
+                      className="h-4 sm:h-5 w-4 sm:w-5 fill-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z" />
+                      <path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z" />
+                      <path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,0,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z" />
+                    </svg>
+                  </span>
+                </a>
               </div>
             </div>
 
-            <div className="flex h-full flex-col rounded-3xl bg-white/95 px-6 py-4 shadow-[0_18px_45px_rgba(15,23,42,0.06)] sm:px-7 sm:py-5">
-              <p className="text-lg font-semibold uppercase tracking-[0.28em] text-[#682732] sm:text-xl">
+            <div className="flex h-full flex-col rounded-3xl bg-white/95 px-4 py-4 sm:px-7 sm:py-5 shadow-[0_18px_45px_rgba(15,23,42,0.06)]">
+              <p className="text-base sm:text-lg font-semibold uppercase tracking-[0.28em] text-[#682732]">
                 Formation
               </p>
-              <div className="mt-4 grid gap-3">
+              <div className="mt-3 sm:mt-4 grid gap-3">
                 {sortedEducation.map((item) => (
                   <div
                     key={item.degree}
-                    className="rounded-3xl bg-[#682732]/4 p-4"
+                    className="rounded-3xl bg-[#682732]/4 p-3.5 sm:p-4"
                   >
                     <div className="min-w-0">
-                      <p className="text-lg font-semibold text-slate-900">{item.degree}</p>
-                      <div className="mt-1 flex items-center justify-between gap-3 text-sm">
-                        <p className="whitespace-nowrap leading-7 text-slate-600">{item.school}</p>
+                      <p className="text-base sm:text-lg font-semibold text-slate-900">{item.degree}</p>
+                      <div className="mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-3 text-xs sm:text-sm">
+                        <p className="whitespace-nowrap leading-6 sm:leading-7 text-slate-600">{item.school}</p>
                         {item.period ? (
                           <p className="shrink-0 whitespace-nowrap font-medium text-[#682732]">
                             {item.period}
@@ -175,7 +196,7 @@ export function HeroSection() {
                         ) : null}
                       </div>
                       {item.details ? (
-                        <p className="mt-1 text-sm font-medium text-[#682732]">{item.details}</p>
+                        <p className="mt-1 text-xs sm:text-sm font-medium text-[#682732]">{item.details}</p>
                       ) : null}
                     </div>
                   </div>

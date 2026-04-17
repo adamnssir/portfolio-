@@ -41,12 +41,12 @@ export function ProjectGallery(props: {
   const active = images[activeIndex];
 
   return (
-    <div className={props.className ?? "mt-8"}>
+    <div className={props.className ?? "mt-6 sm:mt-8"}>
       <button
         type="button"
         className={[
-          "group relative w-full overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm shadow-[#682732]/10",
-          isPhone ? "aspect-[9/16] sm:aspect-[9/16]" : "aspect-[16/9]",
+          "group relative w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm shadow-[#682732]/10",
+          isPhone ? "aspect-[9/16]" : "aspect-[16/9]",
         ].join(" ")}
         onClick={() => openAt(activeIndex)}
       >
@@ -61,14 +61,14 @@ export function ProjectGallery(props: {
             src={active.src}
             alt={active.alt}
             fill
-            sizes="(min-width: 1024px) 1024px, 100vw"
+            sizes="(min-width: 1024px) 1024px, (min-width: 640px) 600px, 100vw"
             className="object-cover transition duration-500 group-hover:scale-[1.02]"
             unoptimized
           />
         </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/25 via-transparent to-transparent opacity-90" />
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-4 text-left">
-          <div className="inline-flex items-center rounded-full border border-white/80 bg-white/85 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm backdrop-blur">
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 p-3 sm:p-4 text-left">
+          <div className="inline-flex items-center rounded-full border border-white/80 bg-white/85 px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs font-semibold text-slate-700 shadow-sm backdrop-blur">
             Cliquer pour agrandir
           </div>
         </div>
@@ -76,8 +76,8 @@ export function ProjectGallery(props: {
 
       <div
         className={[
-          "mt-4 grid gap-3",
-          isPhone ? "grid-cols-5" : "grid-cols-2 sm:grid-cols-3",
+          "mt-3 sm:mt-4 grid gap-2.5 sm:gap-3",
+          isPhone ? "grid-cols-4 sm:grid-cols-5" : "grid-cols-3 sm:grid-cols-3",
           props.thumbnailsClassName,
         ]
           .filter(Boolean)
@@ -94,7 +94,7 @@ export function ProjectGallery(props: {
                 setActiveIndex(index);
               }}
               className={[
-                "group relative overflow-hidden rounded-2xl border bg-white transition",
+                "group relative overflow-hidden rounded-xl sm:rounded-2xl border bg-white transition",
                 selected ? "border-[#682732]/35 ring-2 ring-[#682732]/10" : "border-slate-200 hover:border-[#682732]/25",
                 isPhone ? "aspect-[9/16]" : "aspect-[16/10]",
               ].join(" ")}
@@ -103,7 +103,7 @@ export function ProjectGallery(props: {
                 src={img.src}
                 alt={img.alt}
                 fill
-                sizes="(min-width: 640px) 240px, 20vw"
+                sizes="(min-width: 640px) 200px, 25vw"
                 className="object-cover transition duration-500 group-hover:scale-[1.03]"
                 unoptimized
               />
@@ -116,7 +116,7 @@ export function ProjectGallery(props: {
             type="button"
             onClick={() => openAt(thumbnailLimit - 1)}
             className={[
-              "group relative overflow-hidden rounded-2xl border border-[#682732]/20 bg-[#682732]/6 text-[#682732] transition hover:border-[#682732]/35",
+              "group relative overflow-hidden rounded-xl sm:rounded-2xl border border-[#682732]/20 bg-[#682732]/6 text-[#682732] transition hover:border-[#682732]/35",
               isPhone ? "aspect-[9/16]" : "aspect-[16/10]",
             ].join(" ")}
           >
@@ -124,14 +124,14 @@ export function ProjectGallery(props: {
               src={overflowPreview.src}
               alt={overflowPreview.alt}
               fill
-              sizes="(min-width: 640px) 240px, 20vw"
+              sizes="(min-width: 640px) 200px, 25vw"
               className="object-cover transition duration-500 group-hover:scale-[1.03]"
               unoptimized
             />
             <div className="absolute inset-0 bg-slate-900/45 backdrop-blur-[1px]" />
             <div className="relative z-10 flex flex-col items-center gap-1 text-white">
-              <span className="text-lg font-semibold">+{remainingCount}</span>
-              <span className="rounded-full border border-white/30 bg-white/12 px-2.5 py-1 text-[11px] font-medium tracking-[0.04em]">
+              <span className="text-base sm:text-lg font-semibold">+{remainingCount}</span>
+              <span className="rounded-full border border-white/30 bg-white/12 px-2 py-0.5 text-[10px] sm:text-[11px] font-medium tracking-[0.04em]">
                 Voir tout
               </span>
             </div>

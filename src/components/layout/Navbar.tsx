@@ -44,7 +44,7 @@ export function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-slate-200/80 bg-white/85 backdrop-blur supports-[backdrop-filter]:bg-white/75">
-        <div className="mx-auto flex h-18 w-full max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-16 sm:h-18 w-full max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
          
           <nav className="hidden items-center gap-6 text-base font-semibold text-slate-600 lg:flex">
             {items.map((item) => (
@@ -65,38 +65,55 @@ export function Navbar() {
 
           <button
             type="button"
-            className="inline-flex h-11 items-center justify-center rounded-full border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-[#682732]/25 hover:bg-[#682732]/5 hover:text-[#682732] lg:hidden"
+            className="inline-flex h-10 sm:h-11 items-center justify-center rounded-full border border-slate-200 bg-white px-3 sm:px-4 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-[#682732]/25 hover:bg-[#682732]/5 hover:text-[#682732] lg:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-controls="mobile-nav"
           >
-            Menu
+            <span className="hidden sm:inline">Menu</span>
+            <svg className="sm:hidden h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M3 6h18M3 12h18M3 18h18" strokeLinecap="round" />
+            </svg>
           </button>
         </div>
       </header>
 
       {open ? (
-        <div className="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-[2px] lg:hidden" onClick={() => setOpen(false)}>
+        <div className="fixed inset-0 z-40 bg-slate-900/40 backdrop-blur-sm lg:hidden" onClick={() => setOpen(false)}>
           <div
             id="mobile-nav"
-            className="absolute left-4 right-4 top-20 rounded-[28px] border border-slate-200 bg-white p-4 shadow-[0_24px_60px_rgba(15,23,42,0.12)]"
+            className="absolute inset-4 sm:inset-6 md:inset-10 flex items-center justify-center"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex flex-col gap-2">
-              {items.map((item) => (
+            <div className="w-full max-w-md bg-white rounded-3xl border border-slate-200 p-5 shadow-[0_24px_60px_rgba(15,23,42,0.18)]">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-lg font-semibold text-slate-900">Menu</p>
                 <button
-                  key={item.href}
                   type="button"
-                  onClick={() => handleSectionNavigation(item.href)}
-                  className="whitespace-nowrap border-b border-slate-100 px-1 py-3 text-left text-base font-semibold text-slate-700 transition-colors last:border-b-0 hover:text-[#682732]"
+                  onClick={() => setOpen(false)}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/90 text-slate-700 transition hover:border-[#682732]/25 hover:bg-[#682732]/5 hover:text-[#682732]"
+                  aria-label="Fermer le menu"
                 >
-                  {item.label}
+                  <span className="text-2xl leading-none">×</span>
                 </button>
-              ))}
-            </div>
+              </div>
+              
+              <div className="flex flex-col gap-2">
+                {items.map((item) => (
+                  <button
+                    key={item.href}
+                    type="button"
+                    onClick={() => handleSectionNavigation(item.href)}
+                    className="whitespace-nowrap border-b border-slate-100 px-1 py-4 text-left text-base font-semibold text-slate-700 transition-colors last:border-b-0 hover:text-[#682732]"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
 
-            <div className="mt-4 flex items-center justify-between gap-3">
-              <DownloadCvButton onClick={() => setOpen(false)} />
+              <div className="mt-6 flex items-center justify-center">
+                <DownloadCvButton onClick={() => setOpen(false)} />
+              </div>
             </div>
           </div>
         </div>

@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -47,6 +48,18 @@ body {
 
 ::selection {
   background: rgba(104, 39, 50, 0.22);
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  html {
+    font-size: 14px;
+  }
 }
 
 @keyframes gallery-fade-slide {
@@ -98,10 +111,17 @@ body {
   display: flex;
   list-style: none;
   width: 100%;
-  padding-top: 16px;
+  padding-top: 14px;
   justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .hero-contact-wrapper {
+    padding-top: 16px;
+    gap: 12px;
+  }
 }
 
 .hero-contact-item {
@@ -113,14 +133,24 @@ body {
   display: inline-flex;
   align-items: stretch;
   border: 1px solid #cbd5e1;
-  border-radius: 12px;
+  border-radius: 10px;
   overflow: visible;
   background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
   box-shadow:
-    0 10px 20px rgba(15, 23, 42, 0.12),
+    0 8px 16px rgba(15, 23, 42, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
     inset 0 -1px 0 rgba(148, 163, 184, 0.22);
   transition: all 220ms ease;
+}
+
+@media (min-width: 640px) {
+  .hero-contact-combo {
+    border-radius: 12px;
+    box-shadow:
+      0 10px 20px rgba(15, 23, 42, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(148, 163, 184, 0.22);
+  }
 }
 
 .hero-contact-combo:hover {
@@ -139,35 +169,61 @@ body {
   color: #334155;
   background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
   border: 1px solid #cbd5e1;
-  border-radius: 12px;
-  padding: 10px 15px;
-  gap: 12px;
+  border-radius: 10px;
+  padding: 9px 12px;
+  gap: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 46px;
+  min-height: 42px;
   box-shadow:
-    0 10px 20px rgba(15, 23, 42, 0.12),
+    0 8px 16px rgba(15, 23, 42, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.8),
     inset 0 -1px 0 rgba(148, 163, 184, 0.22);
   cursor: pointer;
   transition: all 220ms ease;
 }
 
+@media (min-width: 640px) {
+  .hero-contact-icon {
+    border-radius: 12px;
+    padding: 10px 15px;
+    gap: 12px;
+    min-height: 46px;
+    box-shadow:
+      0 10px 20px rgba(15, 23, 42, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(148, 163, 184, 0.22);
+  }
+}
+
 .hero-contact-text {
   color: #334155;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   transition: color 220ms ease;
   white-space: nowrap;
 }
 
+@media (min-width: 640px) {
+  .hero-contact-text {
+    font-size: 0.95rem;
+  }
+}
+
 .hero-contact-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
   color: #334155;
   transition: color 220ms ease;
+}
+
+@media (min-width: 640px) {
+  .hero-contact-icon svg {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .hero-contact-icon:hover {
@@ -272,7 +328,13 @@ body {
   border-radius: 0;
   background: transparent;
   box-shadow: none;
-  min-height: 44px;
+  min-height: 42px;
+}
+
+@media (min-width: 640px) {
+  .hero-contact-icon-main {
+    min-height: 44px;
+  }
 }
 
 .hero-contact-icon-main:hover {
@@ -283,14 +345,21 @@ body {
 }
 
 .hero-copy-btn-integrated {
-  width: 42px;
+  width: 40px;
   height: auto;
-  min-height: 44px;
+  min-height: 42px;
   border: 0;
   border-radius: 0;
   border-left: 1px solid #cbd5e1;
   background: transparent;
   box-shadow: none;
+}
+
+@media (min-width: 640px) {
+  .hero-copy-btn-integrated {
+    width: 42px;
+    min-height: 44px;
+  }
 }
 
 .hero-copy-btn-integrated:hover {
