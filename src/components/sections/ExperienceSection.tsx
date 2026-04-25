@@ -5,6 +5,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { ProjectGallery } from "@/components/gallery/ProjectGallery";
+import { MobileGalleryToggle } from "@/components/sections/MobileGalleryToggle";
 
 const techLogos: Record<string, string> = {
   React: "/logotechnologie/reactjs-svgrepo-com.svg",
@@ -41,6 +42,10 @@ const techLogos: Record<string, string> = {
   Vite: "/logotechnologie/vitejs-svgrepo-com.svg",
   "Gemini API": "/logotechnologie/api gemini.png",
   Maven: "/logotechnologie/maven-svgrepo-com.svg",
+  Cloudinary: "/logotechnologie/cloudinary logo.png",
+  AWS: "/logotechnologie/Amazon_Web_Services_Logo.svg.png",
+  "Google Analytics": "/logotechnologie/google_analytics_image_logo.webp",
+  Cloudflare: "/logotechnologie/Cloudflare_Logo.png",
 };
 
 export function ExperienceSection() {
@@ -74,58 +79,66 @@ export function ExperienceSection() {
                 viewport={{ once: true, amount: 0.2 }}
                 className="h-full overflow-hidden rounded-3xl bg-white/95 shadow-[0_18px_45px_rgba(15,23,42,0.06)]"
               >
-                <div className="grid gap-5 p-4 sm:p-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.9fr)] lg:items-start xl:gap-8 xl:p-6">
-                  <div>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-xs sm:text-sm lg:text-base font-semibold text-[#682732]">{item.period}</p>
-                      <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">{item.title}</h3>
-                      <p className="text-xs sm:text-sm lg:text-base text-slate-600">
-                        {item.company}
-                        {item.location ? <span className="text-slate-400"> · {item.location}</span> : null}
-                      </p>
+                <div>
+                  <div className="grid gap-5 p-4 sm:p-5 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.9fr)] lg:items-start xl:gap-8 xl:p-6">
+                    <div>
+                      <div className="flex flex-col gap-2">
+                        <p className="text-xs sm:text-sm lg:text-base font-semibold text-[#682732]">{item.period}</p>
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-slate-900">{item.title}</h3>
+                        <p className="text-xs sm:text-sm lg:text-base text-slate-600">
+                          {item.company}
+                          {item.location ? <span className="text-slate-400"> · {item.location}</span> : null}
+                        </p>
+                      </div>
+
+                      <p className="mt-3 text-sm leading-6 sm:leading-7 lg:text-base lg:leading-8 text-slate-600">{item.summary}</p>
+
+                      <ul className="mt-3 space-y-1.5 text-sm lg:text-base text-slate-600">
+                        {item.highlights.map((h) => (
+                          <li key={h} className="flex gap-2">
+                            <span className="mt-[6px] sm:mt-[7px] lg:mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#682732]/80" />
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {item.stack.map((tech) => (
+                          <Badge
+                            key={tech}
+                            className="px-2.5 sm:px-3.5 py-1.5 text-xs sm:text-sm lg:text-base"
+                          >
+                            <span className="inline-flex items-center gap-2 sm:gap-2.5">
+                              {techLogos[tech] ? (
+                                <Image
+                                  src={techLogos[tech]}
+                                  alt=""
+                                  width={14}
+                                  height={14}
+                                  className="h-3.5 w-3.5 sm:h-4 sm:w-4 lg:h-5 lg:w-5 object-contain"
+                                  unoptimized
+                                />
+                              ) : null}
+                              <span>{tech}</span>
+                            </span>
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
 
-                    <p className="mt-3 text-sm leading-6 sm:leading-7 lg:text-base lg:leading-8 text-slate-600">{item.summary}</p>
-
-                    <ul className="mt-3 space-y-1.5 text-sm lg:text-base text-slate-600">
-                      {item.highlights.map((h) => (
-                        <li key={h} className="flex gap-2">
-                          <span className="mt-[6px] sm:mt-[7px] lg:mt-[8px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#682732]/80" />
-                          <span>{h}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {item.stack.map((tech) => (
-                        <Badge
-                          key={tech}
-                          className="px-2.5 sm:px-3.5 py-1.5 text-xs sm:text-sm lg:text-base"
-                        >
-                          <span className="inline-flex items-center gap-2 sm:gap-2.5">
-                            {techLogos[tech] ? (
-                              <Image
-                                src={techLogos[tech]}
-                                alt=""
-                                width={14}
-                                height={14}
-                                className="h-3.5 w-3.5 sm:h-4 sm:w-4 lg:h-5 lg:w-5 object-contain"
-                                unoptimized
-                              />
-                            ) : null}
-                            <span>{tech}</span>
-                          </span>
-                        </Badge>
-                      ))}
-                    </div>
+                    {item.images.length > 0 && (
+                      <ProjectGallery
+                        images={item.images}
+                        aspect="16:9"
+                        className="mt-0"
+                        thumbnailsClassName="grid-cols-3 sm:grid-cols-4"
+                      />
+                    )}
                   </div>
 
-                  <ProjectGallery
-                    images={item.images}
-                    aspect="16:9"
-                    className="mt-0"
-                    thumbnailsClassName="grid-cols-3 sm:grid-cols-4"
-                  />
+                  {item.mobileImages && item.mobileImages.length > 0 && (
+                    <MobileGalleryToggle images={item.mobileImages} />
+                  )}
                 </div>
               </Reveal>
             ))}

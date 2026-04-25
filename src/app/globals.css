@@ -25,9 +25,13 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: clip;
 }
 
 body {
+  overflow-x: clip;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
   background:
     radial-gradient(900px 600px at 15% 10%, rgba(104, 39, 50, 0.07), transparent 60%),
     radial-gradient(900px 600px at 85% 20%, rgba(144, 71, 84, 0.05), transparent 60%),
@@ -59,6 +63,13 @@ body {
 @media (max-width: 400px) {
   html {
     font-size: 14px;
+  }
+}
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 

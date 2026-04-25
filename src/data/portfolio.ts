@@ -29,6 +29,7 @@ export type ExperienceItem = {
   highlights: string[];
   stack: string[];
   images: ProjectImage[];
+  mobileImages?: ProjectImage[];
 };
 
 export type EducationItem = {
@@ -220,6 +221,45 @@ export const portfolio: {
     },
   ],
   experience: [
+    {
+      title: "Développeur Full Stack",
+      company: "Soinaura",
+      period: "Janv 2026 – Mars 2026",
+      summary:
+        "Conçu et développé une plateforme e-commerce complète dédiée aux produits de soin et beauté, incluant un catalogue multi-niveaux avec gestion des catégories, promotions, stock, et statuts produits.",
+      highlights: [
+        "Implémenté un système de paiement sécurisé via Stripe Checkout, une gestion des commandes avec suivi, et un tableau de bord administrateur avec visualisation des revenus, commandes et top produits.",
+        "Intégré le stockage d'images sur Cloudinary, le tracking analytique via Google Analytics 4, et la protection via Cloudflare.",
+      ],
+      stack: ["Next.js", "Node.js", "MongoDB", "TypeScript", "Stripe", "Cloudinary", "Docker", "GitHub Actions", "AWS", "Google Analytics", "Cloudflare"],
+      images: [
+        { src: "/ExpPro/Soinaura/1.png", alt: "Soinaura interface 1" },
+        { src: "/ExpPro/Soinaura/2.png", alt: "Soinaura interface 2" },
+        { src: "/ExpPro/Soinaura/3.png", alt: "Soinaura interface 3" },
+        { src: "/ExpPro/Soinaura/4.png", alt: "Soinaura interface 4" },
+        { src: "/ExpPro/Soinaura/5.png", alt: "Soinaura interface 5" },
+        { src: "/ExpPro/Soinaura/6.png", alt: "Soinaura interface 6" },
+        { src: "/ExpPro/Soinaura/7.png", alt: "Soinaura interface 7" },
+        { src: "/ExpPro/Soinaura/8.png", alt: "Soinaura interface 8" },
+        { src: "/ExpPro/Soinaura/9.png", alt: "Soinaura interface 9" },
+        { src: "/ExpPro/Soinaura/10.png", alt: "Soinaura interface 10" },
+        { src: "/ExpPro/Soinaura/11.png", alt: "Soinaura interface 11" },
+        { src: "/ExpPro/Soinaura/12.png", alt: "Soinaura interface 12" },
+        { src: "/ExpPro/Soinaura/13.png", alt: "Soinaura interface 13" },
+      ],
+      mobileImages: [
+        { src: "/ExpPro/Soinaura/mobile/1.png", alt: "Soinaura mobile 1" },
+        { src: "/ExpPro/Soinaura/mobile/2.png", alt: "Soinaura mobile 2" },
+        { src: "/ExpPro/Soinaura/mobile/3.png", alt: "Soinaura mobile 3" },
+        { src: "/ExpPro/Soinaura/mobile/4.png", alt: "Soinaura mobile 4" },
+        { src: "/ExpPro/Soinaura/mobile/5.png", alt: "Soinaura mobile 5" },
+        { src: "/ExpPro/Soinaura/mobile/6.png", alt: "Soinaura mobile 6" },
+        { src: "/ExpPro/Soinaura/mobile/7.png", alt: "Soinaura mobile 7" },
+        { src: "/ExpPro/Soinaura/mobile/8.png", alt: "Soinaura mobile 8" },
+        { src: "/ExpPro/Soinaura/mobile/9.png", alt: "Soinaura mobile 9" },
+        { src: "/ExpPro/Soinaura/mobile/10.png", alt: "Soinaura mobile 10" },
+      ],
+    },
     {
       title: "Développeur Full Stack – Projet Freelance",
       company: "Drivoxe",
